@@ -11,4 +11,6 @@ PekkoToAkkaInterop
 * In this test, the PekkoLocalActor2 sends a message to the AkkaRemoteActor
 * Pekko has been configured using `application2.conf` to use `akka` URIs so Akka accepts the message. Pekko also needs to accept `akka` messages so that it can handle the response.
 * The Akka team are very unlikely to make an equivalent change that lets Akka use or accept `pekko` URIs
-  
+
+PekkoToAkkaAeronInterop
+* basically, the same as PekkoToAkkaInterop but uses Artery comms instead of Classic (Netty) comms
