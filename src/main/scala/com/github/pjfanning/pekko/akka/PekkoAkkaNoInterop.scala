@@ -5,7 +5,7 @@ import org.apache.pekko
 
 import java.io.File
 
-object Main extends App {
+object PekkoAkkaNoInterop extends App {
   val remoteConfig = ConfigFactory.load("remote-application")
   val akkaSystem = akka.actor.ActorSystem("akka-system")
   val akkaRemoteSystem = akka.actor.ActorSystem("akka-remote-system", remoteConfig)
