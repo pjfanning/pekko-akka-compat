@@ -13,15 +13,16 @@ lazy val root = (project in file("."))
       "com.typesafe.akka" %% "akka-remote" % akkaVersion,
       "com.typesafe.akka" %% "akka-cluster" % akkaVersion,
       "com.typesafe.akka" %% "akka-cluster-typed" % akkaVersion,
-      //"org.apache.pekko" %% "pekko-remote" % pekkoVersion,
       "org.apache.pekko" %% "pekko-actor" % pekkoVersion,
       "org.apache.pekko" %% "pekko-actor-typed" % pekkoVersion,
       "org.apache.pekko" %% "pekko-stream" % pekkoVersion,
       "org.apache.pekko" %% "pekko-pki" % pekkoVersion,
       "org.apache.pekko" %% "pekko-protobuf-v3" % pekkoVersion,
-      ("org.apache.pekko" %% "pekko-cluster" % pekkoVersion)
-        .exclude("org.apache.pekko", "pekko-remote"),
-      "org.apache.pekko" %% "pekko-cluster-typed" % pekkoVersion,
+      //"org.apache.pekko" %% "pekko-remote" % pekkoVersion,
+      //("org.apache.pekko" %% "pekko-cluster" % pekkoVersion)
+      //  .exclude("org.apache.pekko", "pekko-remote"),
+      ("org.apache.pekko" %% "pekko-cluster-typed" % pekkoVersion)
+        .exclude("org.apache.pekko", "pekko-cluster"),
       "org.agrona" % "agrona" % "1.15.1",
       "io.aeron" % "aeron-driver" % "1.38.1" % Runtime,
       "io.aeron" % "aeron-client" % "1.38.1" % Runtime,
