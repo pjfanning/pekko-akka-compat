@@ -2,31 +2,32 @@ ThisBuild / version := "0.1.0-SNAPSHOT"
 
 ThisBuild / scalaVersion := "2.13.12"
 
-val akkaVersion = "2.6.21"
-val pekkoVersion = "1.0.1"
+ThisBuild / resolvers += Resolver.mavenLocal
+ThisBuild / resolvers += Resolver.ApacheMavenSnapshotsRepo
+
+
+val pekkoVersion = "1.1.0-M0+227-2ae6c8d0-SNAPSHOT"
 
 lazy val root = (project in file("."))
   .settings(
     name := "pekko-akka-compat",
     libraryDependencies := Seq(
-      "com.typesafe.akka" %% "akka-actor-typed" % akkaVersion,
-      "com.typesafe.akka" %% "akka-remote" % akkaVersion,
-      "com.typesafe.akka" %% "akka-cluster" % akkaVersion,
-      "com.typesafe.akka" %% "akka-cluster-typed" % akkaVersion,
       "org.apache.pekko" %% "pekko-actor" % pekkoVersion,
       "org.apache.pekko" %% "pekko-actor-typed" % pekkoVersion,
       "org.apache.pekko" %% "pekko-stream" % pekkoVersion,
+      "org.apache.pekko" %% "pekko-distributed-data" % pekkoVersion,
       "org.apache.pekko" %% "pekko-pki" % pekkoVersion,
       "org.apache.pekko" %% "pekko-protobuf-v3" % pekkoVersion,
-      //"org.apache.pekko" %% "pekko-remote" % pekkoVersion,
-      //("org.apache.pekko" %% "pekko-cluster" % pekkoVersion)
-      //  .exclude("org.apache.pekko", "pekko-remote"),
+      //1.1.0-M0+231-2b89026a-SNAPSHOT
+      ("org.apache.pekko" %% "pekko-remote" % pekkoVersion)
+        .excludeAll(ExclusionRule(organization = "org.apache.pekko")),
       ("org.apache.pekko" %% "pekko-cluster-typed" % pekkoVersion)
-        .exclude("org.apache.pekko", "pekko-cluster"),
+        .excludeAll(ExclusionRule(organization = "org.apache.pekko")),
+      "io.netty" % "netty-all" % "4.1.104.Final",
+      "io.netty" % "netty" % "3.10.6.Final",
       "org.agrona" % "agrona" % "1.15.1",
       "io.aeron" % "aeron-driver" % "1.38.1" % Runtime,
       "io.aeron" % "aeron-client" % "1.38.1" % Runtime,
-      "io.netty" % "netty" % "3.10.6.Final" % Runtime,
-      "org.slf4j" % "slf4j-simple" % "1.7.36" % Runtime
+      "org.slf4j" % "slf4j-simple" % "2.0.11" % Runtime
     )
   )
