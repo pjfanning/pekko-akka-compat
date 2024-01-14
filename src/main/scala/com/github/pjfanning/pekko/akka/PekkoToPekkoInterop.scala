@@ -4,8 +4,10 @@ import com.typesafe.config.ConfigFactory
 import org.apache.pekko
 
 object PekkoToPekkoInterop extends App {
-  val remoteConfig = ConfigFactory.load("remote-application")
-  val remote2Config = ConfigFactory.load("remote2-application")
+  val remoteConfig = ConfigFactory.parseString("pekko.remote.classic.manager-name-prefix = \"pekkoprotocolmanager\"")
+    .withFallback(ConfigFactory.load("remote-application"))
+  val remote2Config = ConfigFactory.parseString("pekko.remote.classic.manager-name-prefix = \"akkaprotocolmanager\"")
+    .withFallback(ConfigFactory.load("remote2-application"))
   val pekkoSystem = pekko.actor.ActorSystem("pekko-remote-system", remoteConfig)
   val pekko2System = pekko.actor.ActorSystem("pekko2-remote-system", remote2Config)
   try {
