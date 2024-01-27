@@ -2,8 +2,10 @@ ThisBuild / version := "0.1.0-SNAPSHOT"
 
 ThisBuild / scalaVersion := "2.13.12"
 
+ThisBuild / resolvers += Resolver.ApacheMavenSnapshotsRepo
+
 val akkaVersion = "2.6.21"
-val pekkoVersion = "1.0.2"
+val pekkoVersion = "1.0.2+30-ed2b06bb-SNAPSHOT"
 
 lazy val root = (project in file("."))
   .settings(
@@ -18,11 +20,9 @@ lazy val root = (project in file("."))
       "org.apache.pekko" %% "pekko-stream" % pekkoVersion,
       "org.apache.pekko" %% "pekko-pki" % pekkoVersion,
       "org.apache.pekko" %% "pekko-protobuf-v3" % pekkoVersion,
-      //"org.apache.pekko" %% "pekko-remote" % pekkoVersion,
-      //("org.apache.pekko" %% "pekko-cluster" % pekkoVersion)
-      //  .exclude("org.apache.pekko", "pekko-remote"),
-      ("org.apache.pekko" %% "pekko-cluster-typed" % pekkoVersion)
-        .exclude("org.apache.pekko", "pekko-cluster"),
+      "org.apache.pekko" %% "pekko-remote" % pekkoVersion,
+      "org.apache.pekko" %% "pekko-cluster" % pekkoVersion,
+      "org.apache.pekko" %% "pekko-cluster-typed" % pekkoVersion,
       "org.agrona" % "agrona" % "1.15.1",
       "io.aeron" % "aeron-driver" % "1.38.1" % Runtime,
       "io.aeron" % "aeron-client" % "1.38.1" % Runtime,
