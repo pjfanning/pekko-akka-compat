@@ -4,8 +4,7 @@ ThisBuild / scalaVersion := "2.13.12"
 
 ThisBuild / resolvers += Resolver.ApacheMavenSnapshotsRepo
 
-
-val pekkoVersion = "1.1.0-M0+289-8e7ae52a-SNAPSHOT"
+val pekkoVersion = "1.0.2+30-ed2b06bb-SNAPSHOT"
 
 lazy val root = (project in file("."))
   .settings(
@@ -22,7 +21,6 @@ lazy val root = (project in file("."))
         .excludeAll(ExclusionRule(organization = "org.apache.pekko")),
       ("org.apache.pekko" %% "pekko-cluster-typed" % pekkoVersion)
         .excludeAll(ExclusionRule(organization = "org.apache.pekko")),
-      "io.netty" % "netty-all" % "4.1.104.Final",
       "io.netty" % "netty" % "3.10.6.Final",
       "org.agrona" % "agrona" % "1.15.1",
       "io.aeron" % "aeron-driver" % "1.38.1" % Runtime,
