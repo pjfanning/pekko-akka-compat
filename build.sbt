@@ -2,11 +2,10 @@ ThisBuild / version := "0.1.0-SNAPSHOT"
 
 ThisBuild / scalaVersion := "2.13.12"
 
-ThisBuild / resolvers += Resolver.mavenLocal
 ThisBuild / resolvers += Resolver.ApacheMavenSnapshotsRepo
 
 
-val pekkoVersion = "1.1.0-M0+227-2ae6c8d0-SNAPSHOT"
+val pekkoVersion = "1.1.0-M0+289-8e7ae52a-SNAPSHOT"
 
 lazy val root = (project in file("."))
   .settings(
